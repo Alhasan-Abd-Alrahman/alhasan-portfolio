@@ -1,0 +1,10 @@
+import { motion } from 'framer-motion';
+import { ArrowUpRight, Braces, Gauge, Layers3 } from 'lucide-react';
+import Reveal from '../components/Reveal';
+import SectionTitle from '../components/SectionTitle';
+const principles = [
+  { icon: Braces, n: '01', title: 'Clean by design', text: 'Reusable components and clear structure that make future changes easier.' },
+  { icon: Gauge, n: '02', title: 'Fast feels better', text: 'Responsive layouts, practical loading strategies, and attention to real-world performance.' },
+  { icon: Layers3, n: '03', title: 'Built for people', text: 'Thoughtful states, accessible interactions, and interfaces that make complex work feel simple.' },
+];
+export default function Manifesto() { return <section id="about" className="section-shell manifesto section-pad"><Reveal><SectionTitle index="01" eyebrow="A LITTLE ABOUT MY APPROACH" title="More than making it look good." description="Good frontend work lives where thoughtful design, maintainable code, and real user needs meet." /></Reveal><div className="manifesto-grid"><Reveal className="manifesto-statement"><span className="quote-mark">“</span><p>I like turning <em>messy problems</em> into interfaces that feel obvious to use.</p><span className="statement-rule" /><p className="statement-small">The goal isn't to impress people with complexity. It's to make complexity disappear.</p><a className="text-link" href="#experience">Get to know my journey <ArrowUpRight size={15} /></a></Reveal><div className="principle-list">{principles.map((item, i) => <Reveal key={item.n} delay={i * .1}><motion.article className="principle" whileHover={{ x: 6 }} transition={{ duration: .2 }}><div className="principle-icon"><item.icon size={20} strokeWidth={1.6} /></div><div className="principle-copy"><span className="mono principle-number">{item.n} / PRINCIPLE</span><h3>{item.title}</h3><p>{item.text}</p></div><span className="principle-arrow"><ArrowUpRight size={16} /></span></motion.article></Reveal>)}</div></div></section>; }

@@ -1,0 +1,12 @@
+import { motion } from 'framer-motion';
+import { ArrowUpRight, Braces, Database, Gauge, GitBranch, PanelsTopLeft, Workflow } from 'lucide-react';
+import Reveal from '../components/Reveal';
+import SectionTitle from '../components/SectionTitle';
+import { skills } from '../data/portfolio';
+const groups = [
+ { icon: PanelsTopLeft, title: 'UI engineering', desc: 'Interfaces that feel consistent and intentional.', tools: 'React · Vue · HTML · CSS · Tailwind · Vuetify · PrimeVue' },
+ { icon: Workflow, title: 'State & architecture', desc: 'Predictable structure for growing applications.', tools: 'Pinia · Vuex · Redux Toolkit basics · Routing · Reusable modules' },
+ { icon: Database, title: 'API & data', desc: 'Connecting interfaces to real business logic.', tools: 'REST APIs · Axios · Postman · Forms · Filtering' },
+ { icon: Gauge, title: 'Performance & delivery', desc: 'Making apps feel lighter and more dependable.', tools: 'Vite · Lazy loading · Code splitting · PWA · Browser DevTools' },
+];
+export default function Skills() { return <section id="toolkit" className="section-shell section-pad toolkit-section"><Reveal><SectionTitle index="03" eyebrow="MY TOOLKIT" title="The right tools. Thoughtfully used." description="I choose tools to solve the problem — not to make the stack look impressive." /></Reveal><div className="toolkit-layout"><div className="toolkit-groups">{groups.map((g, i) => <Reveal key={g.title} delay={i * .07}><motion.article className="toolkit-group" whileHover={{ borderColor: 'rgba(22,139,255,.55)' }}><div className="toolkit-group-icon"><g.icon size={19} /></div><div><h3>{g.title}</h3><p>{g.desc}</p><span>{g.tools}</span></div><ArrowUpRight size={15} className="toolkit-arrow" /></motion.article></Reveal>)}</div><Reveal className="skills-panel"><div className="skills-panel-top"><span className="mono">TECH STACK / INDEX</span><Braces size={17} /></div><div className="skills-list">{skills.map((skill, i) => <motion.div className="skill-row" key={skill.name} initial={{ opacity: 0, x: 12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: .04 * i }}><div className="skill-main"><span className="skill-dot" /><b>{skill.name}</b><span className="skill-type mono">{skill.type}</span></div><p>{skill.level}</p></motion.div>)}</div><div className="skills-panel-bottom"><GitBranch size={14} /> <span>Learning is part of the workflow.</span></div></Reveal></div></section>; }
